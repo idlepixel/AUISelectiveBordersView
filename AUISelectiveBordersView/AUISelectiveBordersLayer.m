@@ -39,7 +39,7 @@
 
 @implementation AUISelectiveBordersLayer
 
-@synthesize selectiveBordersColor, selectiveBordersWidth, selectiveBorderFlag;
+@synthesize selectiveBordersColor, selectiveBordersWidth, selectiveBorderFlag, selectiveBorderDrawLocation;
 
 #pragma mark -
 #pragma mark Initialization
@@ -77,6 +77,7 @@
     selectiveBordersWidth = 0.0;
     selectiveBordersColor = [UIColor blackColor];
     selectiveBorderFlag = AUISelectiveBordersFlagLeft | AUISelectiveBordersFlagRight | AUISelectiveBordersFlagTop | AUISelectiveBordersFlagBottom;
+    selectiveBorderDrawLocation = AUISelectiveBordersDrawLocationMiddle;
 }
 
 #pragma mark -
@@ -125,6 +126,14 @@
     [self roundCornersIfNeeded];
 }
 
+-(void) setSelectiveBorderDrawLocation:(AUISelectiveBordersDrawLocation)drawLocation
+{
+    if (selectiveBorderDrawLocation != drawLocation) {
+        selectiveBorderDrawLocation = drawLocation;
+        [self reloadBorders];
+    }
+}
+
 #pragma mark -
 #pragma mark Drawing
 
@@ -133,28 +142,114 @@
     if (!borderLayer)
         return;
     
+    CGFloat borderWidth = selectiveBordersWidth;
+    CGFloat halfBorderWidth = borderWidth/2.0f;
+    
+    // inner
+    CGPoint startPoint, endPoint;
     UIBezierPath *path = [[UIBezierPath alloc] init];
+    
+    CGRect bounds = self.bounds;
+    
+    CGPoint minPoint = bounds.origin;
+    CGPoint maxPoint = CGPointMake(CGRectGetMaxX(bounds), CGRectGetMaxY(bounds));
+    
     if (selectiveBorderFlag & AUISelectiveBordersFlagLeft) { // left border
-        CGPoint startPoint = CGPointMake(0-selectiveBordersWidth/2, 0);
-        CGPoint endPoint = CGPointMake(0-selectiveBordersWidth/2, CGRectGetMaxY(self.bounds));
+        
+        startPoint = CGPointMake(minPoint.x, minPoint.y);
+        endPoint = CGPointMake(minPoint.x, maxPoint.y);
+        switch (selectiveBorderDrawLocation) {
+            case AUISelectiveBordersDrawLocationInner:
+                startPoint.x = startPoint.x + halfBorderWidth;
+                endPoint.x = endPoint.x + halfBorderWidth;
+                break;
+            case AUISelectiveBordersDrawLocationMiddle:
+                startPoint.y = startPoint.y - halfBorderWidth;
+                endPoint.y = endPoint.y + halfBorderWidth;
+                break;
+            case AUISelectiveBordersDrawLocationOuter:
+                startPoint.x = startPoint.x - halfBorderWidth;
+                endPoint.x = endPoint.x - halfBorderWidth;
+                startPoint.y = startPoint.y - borderWidth;
+                endPoint.y = endPoint.y + borderWidth;
+                break;
+        }
+        
         [path moveToPoint:startPoint];
         [path addLineToPoint:endPoint];
     }
+    
     if (selectiveBorderFlag & AUISelectiveBordersFlagRight) { // right border
-        CGPoint startPoint = CGPointMake(CGRectGetMaxX(self.bounds)-selectiveBordersWidth/2, 0);
-        CGPoint endPoint = CGPointMake(CGRectGetMaxX(self.bounds)-selectiveBordersWidth/2, CGRectGetMaxY(self.bounds));
+        
+        startPoint = CGPointMake(maxPoint.x, minPoint.y);
+        endPoint = CGPointMake(maxPoint.x, maxPoint.y);
+        switch (selectiveBorderDrawLocation) {
+            case AUISelectiveBordersDrawLocationInner:
+                startPoint.x = startPoint.x - halfBorderWidth;
+                endPoint.x = endPoint.x - halfBorderWidth;
+                break;
+            case AUISelectiveBordersDrawLocationMiddle:
+                startPoint.y = startPoint.y - halfBorderWidth;
+                endPoint.y = endPoint.y + halfBorderWidth;
+                break;
+            case AUISelectiveBordersDrawLocationOuter:
+                startPoint.x = startPoint.x + halfBorderWidth;
+                endPoint.x = endPoint.x + halfBorderWidth;
+                startPoint.y = startPoint.y - borderWidth;
+                endPoint.y = endPoint.y + borderWidth;
+                break;
+        }
+        
         [path moveToPoint:startPoint];
         [path addLineToPoint:endPoint];
     }
+    
     if (selectiveBorderFlag & AUISelectiveBordersFlagTop) { // top border
-        CGPoint startPoint = CGPointMake(0, 0+selectiveBordersWidth/2);
-        CGPoint endPoint = CGPointMake(CGRectGetMaxX(self.bounds), 0+selectiveBordersWidth/2);
+        
+        startPoint = CGPointMake(minPoint.x, minPoint.y);
+        endPoint = CGPointMake(maxPoint.x, minPoint.y);
+        switch (selectiveBorderDrawLocation) {
+            case AUISelectiveBordersDrawLocationInner:
+                startPoint.y = startPoint.y + halfBorderWidth;
+                endPoint.y = endPoint.y + halfBorderWidth;
+                break;
+            case AUISelectiveBordersDrawLocationMiddle:
+                startPoint.x = startPoint.x - halfBorderWidth;
+                endPoint.x = endPoint.x + halfBorderWidth;
+                break;
+            case AUISelectiveBordersDrawLocationOuter:
+                startPoint.x = startPoint.x - borderWidth;
+                endPoint.x = endPoint.x + borderWidth;
+                startPoint.y = startPoint.y - halfBorderWidth;
+                endPoint.y = endPoint.y - halfBorderWidth;
+                break;
+        }
+        
         [path moveToPoint:startPoint];
         [path addLineToPoint:endPoint];
     }
+    
     if (selectiveBorderFlag & AUISelectiveBordersFlagBottom) { // bottom border
-        CGPoint startPoint = CGPointMake(0, CGRectGetMaxY(self.bounds)-selectiveBordersWidth/2);
-        CGPoint endPoint = CGPointMake(CGRectGetMaxX(self.bounds), CGRectGetMaxY(self.bounds)-selectiveBordersWidth/2);
+        
+        startPoint = CGPointMake(minPoint.x, maxPoint.y);
+        endPoint = CGPointMake(maxPoint.x, maxPoint.y);
+        switch (selectiveBorderDrawLocation) {
+            case AUISelectiveBordersDrawLocationInner:
+                startPoint.y = startPoint.y - halfBorderWidth;
+                endPoint.y = endPoint.y - halfBorderWidth;
+                break;
+            case AUISelectiveBordersDrawLocationMiddle:
+                startPoint.x = startPoint.x - halfBorderWidth;
+                endPoint.x = endPoint.x + halfBorderWidth;
+                break;
+            case AUISelectiveBordersDrawLocationOuter:
+                startPoint.x = startPoint.x - borderWidth;
+                endPoint.x = endPoint.x + borderWidth;
+                startPoint.y = startPoint.y + halfBorderWidth;
+                endPoint.y = endPoint.y + halfBorderWidth;
+                break;
+        }
+        
         [path moveToPoint:startPoint];
         [path addLineToPoint:endPoint];
     }

@@ -45,6 +45,16 @@
     self.selectiveBordersLayer.selectiveBorderFlag = selectiveBorderFlag;
 }
 
+-(AUISelectiveBordersDrawLocation) selectiveBorderDrawLocation
+{
+    return self.selectiveBordersLayer.selectiveBorderDrawLocation;
+}
+
+-(void) setSelectiveBorderDrawLocation:(AUISelectiveBordersDrawLocation)selectiveBorderDrawLocation
+{
+    self.selectiveBordersLayer.selectiveBorderDrawLocation = selectiveBorderDrawLocation;
+}
+
 -(UIColor *)selectiveBordersColor
 {
     return self.selectiveBordersLayer.selectiveBordersColor;

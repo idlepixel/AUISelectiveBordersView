@@ -30,9 +30,17 @@ enum {
     AUISelectiveBordersFlagLeft     = 1 <<  0,
     AUISelectiveBordersFlagRight    = 1 <<  1,
     AUISelectiveBordersFlagTop      = 1 <<  2,
-    AUISelectiveBordersFlagBottom   = 1 <<  3
+    AUISelectiveBordersFlagBottom   = 1 <<  3,
+    AUISelectiveBordersFlagAll      = (AUISelectiveBordersFlagLeft | AUISelectiveBordersFlagRight | AUISelectiveBordersFlagTop | AUISelectiveBordersFlagBottom)
 };
 typedef NSUInteger AUISelectiveBordersFlag;
+
+enum {
+    AUISelectiveBordersDrawLocationInner    = 0, // default behaviour - matches standard border drawing
+    AUISelectiveBordersDrawLocationMiddle   = 1,
+    AUISelectiveBordersDrawLocationOuter    = 2
+};
+typedef NSUInteger AUISelectiveBordersDrawLocation;
 
 
 @interface AUISelectiveBordersLayer : CALayer {
@@ -42,5 +50,6 @@ typedef NSUInteger AUISelectiveBordersFlag;
 @property (nonatomic, strong) UIColor *selectiveBordersColor;
 @property (nonatomic) float selectiveBordersWidth;
 @property (nonatomic) AUISelectiveBordersFlag selectiveBorderFlag;
+@property (nonatomic) AUISelectiveBordersDrawLocation selectiveBorderDrawLocation;
 
 @end

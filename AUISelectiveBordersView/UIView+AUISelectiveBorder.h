@@ -32,5 +32,6 @@
 @property (nonatomic, strong) UIColor *selectiveBordersColor;
 @property (nonatomic) float selectiveBordersWidth;
 @property (nonatomic) AUISelectiveBordersFlag selectiveBorderFlag;
+@property (nonatomic) AUISelectiveBordersDrawLocation selectiveBorderDrawLocation;
 
 @end
