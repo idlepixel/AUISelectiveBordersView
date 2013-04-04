@@ -28,11 +28,13 @@
 #pragma mark -
 #pragma mark Private Declarations
 
-@interface AUISelectiveBordersLayer (Private)
+@interface AUISelectiveBordersLayer ()
+
 -(void) commonInit;
 -(void) reloadBorders;
 // TODO
 -(void) roundCornersIfNeeded;
+
 @end
 
 @implementation AUISelectiveBordersLayer

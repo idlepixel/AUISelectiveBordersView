@@ -26,40 +26,43 @@
 
 @implementation UIView (AUISelectiveBorder)
 
+-(AUISelectiveBordersLayer *)selectiveBordersLayer
+{
+    if ([self.layer isKindOfClass:[AUISelectiveBordersLayer class]]) {
+        return (AUISelectiveBordersLayer *)self.layer;
+    } else {
+        return nil;
+    }
+}
+
 -(AUISelectiveBordersFlag) selectiveBorderFlag
 {
-    AUISelectiveBordersLayer *selectiveLayer = (AUISelectiveBordersLayer *)self.layer;
-    return selectiveLayer.selectiveBorderFlag;
+    return self.selectiveBordersLayer.selectiveBorderFlag;
 }
 
 -(void) setSelectiveBorderFlag:(AUISelectiveBordersFlag)selectiveBorderFlag
 {
-    AUISelectiveBordersLayer *selectiveLayer = (AUISelectiveBordersLayer *)self.layer;
-    selectiveLayer.selectiveBorderFlag = selectiveBorderFlag;
+    self.selectiveBordersLayer.selectiveBorderFlag = selectiveBorderFlag;
 }
 
 -(UIColor *)selectiveBordersColor
 {
-    AUISelectiveBordersLayer *selectiveLayer = (AUISelectiveBordersLayer *)self.layer;
-    return selectiveLayer.selectiveBordersColor;
+    return self.selectiveBordersLayer.selectiveBordersColor;
 }
 
 -(void) setSelectiveBordersColor:(UIColor *)selectiveBordersColor
 {
-    AUISelectiveBordersLayer *selectiveLayer = (AUISelectiveBordersLayer *)self.layer;
-    selectiveLayer.selectiveBordersColor = selectiveBordersColor;
+    self.selectiveBordersLayer.selectiveBordersColor = selectiveBordersColor;
 }
 
 -(float) selectiveBordersWidth
 {
-    AUISelectiveBordersLayer *selectiveLayer = (AUISelectiveBordersLayer *)self.layer;
-    return selectiveLayer.selectiveBordersWidth;
+    return self.selectiveBordersLayer.selectiveBordersWidth;
 }
 
 -(void) setSelectiveBordersWidth:(float)selectiveBordersWidth
 {
-    AUISelectiveBordersLayer *selectiveLayer = (AUISelectiveBordersLayer *)self.layer;
-    selectiveLayer.selectiveBordersWidth = selectiveBordersWidth;
+    self.selectiveBordersLayer.selectiveBordersWidth = selectiveBordersWidth;
 }
 
 @end
