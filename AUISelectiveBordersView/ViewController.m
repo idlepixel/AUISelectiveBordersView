@@ -24,33 +24,37 @@
     [super viewDidLoad];
 	
     // Setting selective borders to the left view controls
-    leftLabel.selectiveBorderFlag = AUISelectiveBordersFlagTop;
-    leftLabel.selectiveBordersColor = [UIColor redColor];
-    leftLabel.selectiveBordersWidth = 3.0;
+    leftLabel.selectiveBorderFlag = AUISelectiveBordersFlagTop | AUISelectiveBordersFlagBottom;
+    leftLabel.selectiveBordersColor = [[UIColor redColor] colorWithAlphaComponent:0.5f];
+    leftLabel.selectiveBorderDrawLocation = AUISelectiveBordersDrawLocationMiddle;
+    leftLabel.selectiveBordersWidth = 4.0;
     
     leftView.selectiveBorderFlag = AUISelectiveBordersFlagTop | AUISelectiveBordersFlagLeft;
-    leftView.selectiveBordersColor = [UIColor blueColor];
+    leftView.selectiveBordersColor = [[UIColor blueColor]  colorWithAlphaComponent:0.5f];
     leftView.selectiveBordersWidth = 3.0;
+    leftView.selectiveBorderDrawLocation = AUISelectiveBordersDrawLocationInner;
 
     leftButton.selectiveBorderFlag = AUISelectiveBordersFlagTop | AUISelectiveBordersFlagRight;
-    leftButton.selectiveBordersColor = [UIColor redColor];
+    leftButton.selectiveBordersColor = [[UIColor redColor]  colorWithAlphaComponent:0.5f];
     leftButton.selectiveBordersWidth = 3.0;
+    leftButton.selectiveBorderDrawLocation = AUISelectiveBordersDrawLocationOuter;
     
     leftImageView.selectiveBorderFlag = AUISelectiveBordersFlagBottom | AUISelectiveBordersFlagLeft | AUISelectiveBordersFlagRight;
-    leftImageView.selectiveBordersColor = [UIColor blueColor];
-    leftImageView.selectiveBordersWidth = 3.0;
+    leftImageView.selectiveBordersColor = [[UIColor blueColor] colorWithAlphaComponent:0.4f];
+    leftImageView.selectiveBordersWidth = 4.0;
+    leftImageView.selectiveBorderDrawLocation = AUISelectiveBordersDrawLocationInner;
     
     // Setting regular borders to the right view controls
-    rightLabel.layer.borderColor = [UIColor redColor].CGColor;
+    rightLabel.layer.borderColor = [[UIColor redColor] colorWithAlphaComponent:0.4f].CGColor;
     rightLabel.layer.borderWidth = 3.0;
     
-    rightView.layer.borderColor = [UIColor blueColor].CGColor;
+    rightView.layer.borderColor = [[UIColor blueColor] colorWithAlphaComponent:0.4f].CGColor;
     rightView.layer.borderWidth = 3.0;
     
-    rightButton.layer.borderColor = [UIColor redColor].CGColor;
+    rightButton.layer.borderColor = [[UIColor redColor] colorWithAlphaComponent:0.4f].CGColor;
     rightButton.layer.borderWidth = 3.0;
     
-    rightImageView.layer.borderColor = [UIColor blueColor].CGColor;
+    rightImageView.layer.borderColor = [[UIColor blueColor] colorWithAlphaComponent:0.4f].CGColor;
     rightImageView.layer.borderWidth = 3.0;
 }
 
