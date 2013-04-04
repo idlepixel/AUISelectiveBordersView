@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7EE8E92170D5B6C00E72A08 /* UIView+AUISelectiveBorderLayerClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EE8E91170D5B6C00E72A08 /* UIView+AUISelectiveBorderLayerClass.m */; };
 		EED2B3DB14D1874E008E1DFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED2B3DA14D1874E008E1DFB /* UIKit.framework */; };
 		EED2B3DD14D1874E008E1DFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED2B3DC14D1874E008E1DFB /* Foundation.framework */; };
 		EED2B3DF14D1874E008E1DFB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED2B3DE14D1874E008E1DFB /* CoreGraphics.framework */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A7EE8E90170D5B6C00E72A08 /* UIView+AUISelectiveBorderLayerClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AUISelectiveBorderLayerClass.h"; sourceTree = "<group>"; };
+		A7EE8E91170D5B6C00E72A08 /* UIView+AUISelectiveBorderLayerClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AUISelectiveBorderLayerClass.m"; sourceTree = "<group>"; };
 		EED2B3D614D1874E008E1DFB /* AUISelectiveBordersView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AUISelectiveBordersView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EED2B3DA14D1874E008E1DFB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EED2B3DC14D1874E008E1DFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -113,6 +116,8 @@
 			children = (
 				EED2B40F14D1A11D008E1DFB /* UIView+AUISelectiveBorder.h */,
 				EED2B41014D1A11D008E1DFB /* UIView+AUISelectiveBorder.m */,
+				A7EE8E90170D5B6C00E72A08 /* UIView+AUISelectiveBorderLayerClass.h */,
+				A7EE8E91170D5B6C00E72A08 /* UIView+AUISelectiveBorderLayerClass.m */,
 				EED2B41214D1A24B008E1DFB /* AUISelectiveBordersLayer.h */,
 				EED2B41314D1A24B008E1DFB /* AUISelectiveBordersLayer.m */,
 			);
@@ -200,6 +205,7 @@
 				EED2B3EE14D1874E008E1DFB /* ViewController.m in Sources */,
 				EED2B41114D1A11D008E1DFB /* UIView+AUISelectiveBorder.m in Sources */,
 				EED2B41414D1A24B008E1DFB /* AUISelectiveBordersLayer.m in Sources */,
+				A7EE8E92170D5B6C00E72A08 /* UIView+AUISelectiveBorderLayerClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +321,7 @@
 				EED2B3F914D1874E008E1DFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

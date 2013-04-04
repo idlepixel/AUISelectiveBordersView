@@ -26,10 +26,6 @@
 
 @implementation UIView (AUISelectiveBorder)
 
-+(Class) layerClass {
-    return [AUISelectiveBordersLayer class];
-}
-
 -(AUISelectiveBordersFlag) selectiveBorderFlag
 {
     AUISelectiveBordersLayer *selectiveLayer = (AUISelectiveBordersLayer *)self.layer;

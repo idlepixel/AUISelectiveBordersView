@@ -7,6 +7,7 @@
 
 #import "ViewController.h"
 #import "UIView+AUISelectiveBorder.h"
+#import "UIView+AUISelectiveBorderLayerClass.h"
 
 @implementation ViewController
 
