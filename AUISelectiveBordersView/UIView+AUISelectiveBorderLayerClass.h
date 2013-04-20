@@ -25,6 +25,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "UIView+AUISelectiveBorder.h"
+
 @interface UIView (AUISelectiveBorderLayerClass)
 
 @end
